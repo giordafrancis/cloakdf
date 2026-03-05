@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unknown"
+dynamic = ["version"]
+description = ""
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "frangs", email = "FGiordano-Silva@lambeth.gov.uk"}]
+keywords = ['nbdev']
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/frangs/unknown"
+Documentation = "https://frangs.github.io/unknown/"
+
+[project.entry-points.nbdev]
+unknown = "unknown._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "unknown.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["unknown"]
+
+[tool.nbdev]
