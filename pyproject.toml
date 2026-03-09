@@ -3,7 +3,7 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "unknown"
+name = "cloakdf"
 dynamic = ["version"]
 description = "Pseudonymisation/anonymisation engine with encrypted mapping storage"
 readme = "README.md"
@@ -18,16 +18,16 @@ classifiers = [
 dependencies = ["cryptography", "pandas"]
 
 [project.urls]
-Repository = "https://github.com/frangs/unknown"
-Documentation = "https://frangs.github.io/unknown/"
+Repository = "https://github.com/frangs/cloakdf"
+Documentation = "https://frangs.github.io/cloakdf/"
 
 [project.entry-points.nbdev]
-unknown = "unknown._modidx:d"
+cloakdf = "cloakdf._modidx:d"
 
 [tool.setuptools.dynamic]
-version = {attr = "unknown.__version__"}
+version = {attr = "cloakdf.__version__"}
 
 [tool.setuptools.packages.find]
-include = ["unknown"]
+include = ["cloakdf"]
 
 [tool.nbdev]

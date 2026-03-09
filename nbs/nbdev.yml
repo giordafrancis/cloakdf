@@ -2,8 +2,8 @@ project:
   output-dir: _docs
 
 website:
-  title: "unknown"
-  site-url: "https://frangs.github.io/unknown"
+  title: "cloakdf"
+  site-url: "https://frangs.github.io/cloakdf"
   description: ""
   repo-branch: main
-  repo-url: "https://github.com/frangs/unknown"
+  repo-url: "https://github.com/frangs/cloakdf"
