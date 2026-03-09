@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "unknown"
 dynamic = ["version"]
-description = ""
+description = "Pseudonymisation/anonymisation engine with encrypted mapping storage"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
 ]
-dependencies = []
+dependencies = ["cryptography", "pandas"]
 
 [project.urls]
 Repository = "https://github.com/frangs/unknown"
