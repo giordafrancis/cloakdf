@@ -1,0 +1,1 @@
+Sitemap: https://frangs.github.io/cloakdf/sitemap.xml
