@@ -18,8 +18,8 @@ classifiers = [
 dependencies = ["cryptography", "pandas"]
 
 [project.urls]
-Repository = "https://github.com/frangs/cloakdf"
-Documentation = "https://frangs.github.io/cloakdf/"
+Repository = "https://github.com/giordafrancis/cloakdf"
+Documentation = "https://giordafrancis.github.io/cloakdf/"
 
 [project.entry-points.nbdev]
 cloakdf = "cloakdf._modidx:d"

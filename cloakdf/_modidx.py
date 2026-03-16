@@ -2,8 +2,8 @@
 
 d = { 'settings': { 'branch': 'main',
                 'doc_baseurl': '/cloakdf',
-                'doc_host': 'https://frangs.github.io',
-                'git_url': 'https://github.com/frangs/cloakdf',
+                'doc_host': 'https://giordafrancis.github.io',
+                'git_url': 'https://github.com/giordafrancis/cloakdf',
                 'lib_path': 'cloakdf'},
   'syms': { 'cloakdf.core': { 'cloakdf.core.CloakDF': ('core.html#cloakdf', 'cloakdf/core.py'),
                               'cloakdf.core.CloakDF.__init__': ('core.html#cloakdf.__init__', 'cloakdf/core.py'),
