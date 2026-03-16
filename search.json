@@ -1,0 +1,92 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "We use the Northwind dataset — a classic sample database with customers, orders, and employees tables that share keys across them.\n\nimport httpx\nfrom pathlib import Path\n\nbase = \"https://raw.githubusercontent.com/neo4j-contrib/northwind-neo4j/refs/heads/master/data\"\nfiles = [\"customers.csv\", \"orders.csv\", \"employees.csv\"]\ndest = Path(\"../data\")\ndest.mkdir(exist_ok=True)\n\nfor f in files:\n    (dest/f).write_bytes(httpx.get(f\"{base}/{f}\").content)\n    print(f\"✓ {f}\")\n\n✓ customers.csv\n✓ orders.csv\n✓ employees.csv\n\n\n\nimport pandas as pd\nfor f in files:\n    df = pd.read_csv(dest/f, on_bad_lines='skip')\n    print(f\"\\n{f}: {df.shape}\")\n    print(df.columns.tolist())\n    display(df.head(2))\n\n\ncustomers.csv: (67, 11)\n['customerID', 'companyName', 'contactName', 'contactTitle', 'address', 'city', 'region', 'postalCode', 'country', 'phone', 'fax']\n\n\n\n\n\n\n\n\n\ncustomerID\ncompanyName\ncontactName\ncontactTitle\naddress\ncity\nregion\npostalCode\ncountry\nphone\nfax\n\n\n\n\n0\nALFKI\nAlfreds Futterkiste\nMaria Anders\nSales Representative\nObere Str. 57\nBerlin\nNaN\n12209\nGermany\n030-0074321\n030-0076545\n\n\n1\nANATR\nAna Trujillo Emparedados y helados\nAna Trujillo\nOwner\nAvda. de la Constitución 2222\nMéxico D.F.\nNaN\n05021\nMexico\n(5) 555-4729\n(5) 555-3745\n\n\n\n\n\n\n\n\norders.csv: (654, 14)\n['orderID', 'customerID', 'employeeID', 'orderDate', 'requiredDate', 'shippedDate', 'shipVia', 'freight', 'shipName', 'shipAddress', 'shipCity', 'shipRegion', 'shipPostalCode', 'shipCountry']\n\n\n\n\n\n\n\n\n\norderID\ncustomerID\nemployeeID\norderDate\nrequiredDate\nshippedDate\nshipVia\nfreight\nshipName\nshipAddress\nshipCity\nshipRegion\nshipPostalCode\nshipCountry\n\n\n\n\n0\n10248\nVINET\n5\n1996-07-04 00:00:00.000\n1996-08-01 00:00:00.000\n1996-07-16 00:00:00.000\n3\n32.38\nVins et alcools Chevalier\n59 rue de l'Abbaye\nReims\nNaN\n51100\nFrance\n\n\n1\n10249\nTOMSP\n6\n1996-07-05 00:00:00.000\n1996-08-16 00:00:00.000\n1996-07-10 00:00:00.000\n1\n11.61\nToms Spezialitäten\nLuisenstr. 48\nMünster\nNaN\n44087\nGermany\n\n\n\n\n\n\n\n\nemployees.csv: (9, 18)\n['employeeID', 'lastName', 'firstName', 'title', 'titleOfCourtesy', 'birthDate', 'hireDate', 'address', 'city', 'region', 'postalCode', 'country', 'homePhone', 'extension', 'photo', 'notes', 'reportsTo', 'photoPath']\n\n\n\n\n\n\n\n\n\nemployeeID\nlastName\nfirstName\ntitle\ntitleOfCourtesy\nbirthDate\nhireDate\naddress\ncity\nregion\npostalCode\ncountry\nhomePhone\nextension\nphoto\nnotes\nreportsTo\nphotoPath\n\n\n\n\n0\n1\nDavolio\nNancy\nSales Representative\nMs.\n1948-12-08 00:00:00.000\n1992-05-01 00:00:00.000\n507 - 20th Ave. E. Apt. 2A\nSeattle\nWA\n98122\nUSA\n(206) 555-9857\n5467\n0x151C2F00020000000D000E0014002100FFFFFFFF4269...\nEducation includes a BA in psychology from Col...\n2.0\nhttp://accweb/emmployees/davolio.bmp\n\n\n1\n2\nFuller\nAndrew\nVice President, Sales\nDr.\n1952-02-19 00:00:00.000\n1992-08-14 00:00:00.000\n908 W. Capital Way\nTacoma\nWA\n98401\nUSA\n(206) 555-9482\n3457\n0x151C2F00020000000D000E0014002100FFFFFFFF4269...\nAndrew received his BTS commercial in 1974 and...\nNaN\nhttp://accweb/emmployees/fuller.bmp",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#setup-data",
+    "href": "core.html#setup-data",
+    "title": "core",
+    "section": "",
+    "text": "We use the Northwind dataset — a classic sample database with customers, orders, and employees tables that share keys across them.\n\nimport httpx\nfrom pathlib import Path\n\nbase = \"https://raw.githubusercontent.com/neo4j-contrib/northwind-neo4j/refs/heads/master/data\"\nfiles = [\"customers.csv\", \"orders.csv\", \"employees.csv\"]\ndest = Path(\"../data\")\ndest.mkdir(exist_ok=True)\n\nfor f in files:\n    (dest/f).write_bytes(httpx.get(f\"{base}/{f}\").content)\n    print(f\"✓ {f}\")\n\n✓ customers.csv\n✓ orders.csv\n✓ employees.csv\n\n\n\nimport pandas as pd\nfor f in files:\n    df = pd.read_csv(dest/f, on_bad_lines='skip')\n    print(f\"\\n{f}: {df.shape}\")\n    print(df.columns.tolist())\n    display(df.head(2))\n\n\ncustomers.csv: (67, 11)\n['customerID', 'companyName', 'contactName', 'contactTitle', 'address', 'city', 'region', 'postalCode', 'country', 'phone', 'fax']\n\n\n\n\n\n\n\n\n\ncustomerID\ncompanyName\ncontactName\ncontactTitle\naddress\ncity\nregion\npostalCode\ncountry\nphone\nfax\n\n\n\n\n0\nALFKI\nAlfreds Futterkiste\nMaria Anders\nSales Representative\nObere Str. 57\nBerlin\nNaN\n12209\nGermany\n030-0074321\n030-0076545\n\n\n1\nANATR\nAna Trujillo Emparedados y helados\nAna Trujillo\nOwner\nAvda. de la Constitución 2222\nMéxico D.F.\nNaN\n05021\nMexico\n(5) 555-4729\n(5) 555-3745\n\n\n\n\n\n\n\n\norders.csv: (654, 14)\n['orderID', 'customerID', 'employeeID', 'orderDate', 'requiredDate', 'shippedDate', 'shipVia', 'freight', 'shipName', 'shipAddress', 'shipCity', 'shipRegion', 'shipPostalCode', 'shipCountry']\n\n\n\n\n\n\n\n\n\norderID\ncustomerID\nemployeeID\norderDate\nrequiredDate\nshippedDate\nshipVia\nfreight\nshipName\nshipAddress\nshipCity\nshipRegion\nshipPostalCode\nshipCountry\n\n\n\n\n0\n10248\nVINET\n5\n1996-07-04 00:00:00.000\n1996-08-01 00:00:00.000\n1996-07-16 00:00:00.000\n3\n32.38\nVins et alcools Chevalier\n59 rue de l'Abbaye\nReims\nNaN\n51100\nFrance\n\n\n1\n10249\nTOMSP\n6\n1996-07-05 00:00:00.000\n1996-08-16 00:00:00.000\n1996-07-10 00:00:00.000\n1\n11.61\nToms Spezialitäten\nLuisenstr. 48\nMünster\nNaN\n44087\nGermany\n\n\n\n\n\n\n\n\nemployees.csv: (9, 18)\n['employeeID', 'lastName', 'firstName', 'title', 'titleOfCourtesy', 'birthDate', 'hireDate', 'address', 'city', 'region', 'postalCode', 'country', 'homePhone', 'extension', 'photo', 'notes', 'reportsTo', 'photoPath']\n\n\n\n\n\n\n\n\n\nemployeeID\nlastName\nfirstName\ntitle\ntitleOfCourtesy\nbirthDate\nhireDate\naddress\ncity\nregion\npostalCode\ncountry\nhomePhone\nextension\nphoto\nnotes\nreportsTo\nphotoPath\n\n\n\n\n0\n1\nDavolio\nNancy\nSales Representative\nMs.\n1948-12-08 00:00:00.000\n1992-05-01 00:00:00.000\n507 - 20th Ave. E. Apt. 2A\nSeattle\nWA\n98122\nUSA\n(206) 555-9857\n5467\n0x151C2F00020000000D000E0014002100FFFFFFFF4269...\nEducation includes a BA in psychology from Col...\n2.0\nhttp://accweb/emmployees/davolio.bmp\n\n\n1\n2\nFuller\nAndrew\nVice President, Sales\nDr.\n1952-02-19 00:00:00.000\n1992-08-14 00:00:00.000\n908 W. Capital Way\nTacoma\nWA\n98401\nUSA\n(206) 555-9482\n3457\n0x151C2F00020000000D000E0014002100FFFFFFFF4269...\nAndrew received his BTS commercial in 1974 and...\nNaN\nhttp://accweb/emmployees/fuller.bmp",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#table-configuration",
+    "href": "core.html#table-configuration",
+    "title": "core",
+    "section": "Table configuration",
+    "text": "Table configuration\nEach table is configured with key groups (id1, id2, …) and a list of columns to mask. Key groups ensure consistent pseudonymisation across tables — e.g. customerID maps to the same UUID in both customers and orders because both use group id1.\n\ntables = {\n    'customers': {\n        'id1': 'customerID',\n        'mask': ['contactName', 'address', 'phone', 'companyName', 'fax', 'city']\n    },\n    'orders': {\n        'id1': 'customerID',\n        'id2': 'employeeID',\n        'mask': ['shipName', 'shipAddress']\n    },\n    'employees': {\n        'id2': 'employeeID',\n        'mask': ['firstName', 'lastName', 'address', 'homePhone', 'birthDate', 'notes']\n    },\n}",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#design-decisions",
+    "href": "core.html#design-decisions",
+    "title": "core",
+    "section": "Design decisions",
+    "text": "Design decisions\n\nWhy UUID4 for key pseudonymisation?\nUUID4 is generated from cryptographically random bits, no timestamp, MAC address, or sequence baked in. The fake ID reveals nothing about the original. With 122 random bits, collision probability is astronomically small.\n\n\nShared vault for masked columns\nMasked columns (names, addresses, etc.) use a flat shared dict across all tables. If \"Maria Anders\" appears in both customers and orders, it gets the same hex token. This preserves referential consistency without leaking the original value.\n\n\nsetdefault pattern\nBoth key_maps and vault use dict.setdefault() , a get-or-insert in one call. This ensures existing mappings are reused and new values are only generated for unseen originals:\nkm = self.key_maps.setdefault(group, {})  # create or retrieve inner dict\nkm.setdefault(val, str(uuid.uuid4()))     # only insert if missing\n\n\nEncryption at rest with Fernet\nThe mappings (key_maps + vault) are the most sensitive artefact ; they’re the keys to de-anonymise everything. We use Fernet (AES-128-CBC + HMAC) from the cryptography library. The encryption key is never stored on the CloakDF instance — it’s passed in at save()/load() time, keeping the class stateless with respect to secrets.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#cloakdf-class",
+    "href": "core.html#cloakdf-class",
+    "title": "core",
+    "section": "CloakDF class",
+    "text": "CloakDF class\n\nsource\n\nCloakDF\n\ndef CloakDF(\n    tables\n):\n\nPseudonymise and mask DataFrames consistently across related tables.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#round-trip-test",
+    "href": "core.html#round-trip-test",
+    "title": "core",
+    "section": "Round-trip test",
+    "text": "Round-trip test\nEncode all three tables, save encrypted mappings, load from a fresh instance, decode, and verify we get the originals back.\n\nimport os\n\n# 1. Generate key and store in env var\nkey = CloakDF.generate_key()\nos.environ['CLOAKDF_KEY'] = key.decode()\nloaded_key = CloakDF.load_key(env_var='CLOAKDF_KEY')\nassert loaded_key == key\nprint(\"✓ Key round-tripped via env var\")\n\n# 2. Encode all tables\nclk = CloakDF(tables)\noriginals, encoded = {}, {}\nfor name in tables:\n    df = pd.read_csv(dest/f\"{name}.csv\", on_bad_lines='skip')\n    for k, v in tables[name].items():\n        if k.startswith('id'): df[v] = df[v].astype(str)\n    originals[name] = df\n    encoded[name] = clk.encode(name, originals[name])\n    print(f\"✓ Encoded {name}\")\n\n# 3. Save, load with env key, decode and compare\n# --- Key loading options (uncomment one) \n# loaded_key = CloakDF.load_key(path=dest/\"secret.key\")\n# loaded_key = CloakDF.load_key(env_var='CLOAKDF_KEY')\nclk.save(dest/\"mappings.enc\", loaded_key)\nclk2 = CloakDF.load(dest/\"mappings.enc\", loaded_key, tables)\nfor name in tables:\n    decoded = clk2.decode(name, encoded[name])\n    pd.testing.assert_frame_equal(decoded, originals[name])\n    print(f\"✓ Decoded {name} matches original\")\n\n✓ Key round-tripped via env var\n✓ Encoded customers\n✓ Encoded orders\n✓ Encoded employees\n✓ Decoded customers matches original\n✓ Decoded orders matches original\n✓ Decoded employees matches original\n\n\n\ncols = ['employeeID', 'firstName', 'lastName', 'title', 'address', 'homePhone']\ndisplay(encoded['employees'][cols].head(3))\ndisplay(decoded[cols].head(3))\n\n\n\n\n\n\n\n\nemployeeID\nfirstName\nlastName\ntitle\naddress\nhomePhone\n\n\n\n\n0\ndcdc9a63-bfd3-4028-8a50-72f0b890adc6\na75b1e84efb9\n4ae3d7a62143\nSales Representative\n71ac5533d30e\n607c88feacc7\n\n\n1\n070391df-c952-4124-8ae3-e3f58e794b24\ncef51a1d70b3\n3c8fe1360470\nVice President, Sales\n5e309c8f9320\n0747f93f0117\n\n\n2\n21395485-312a-45de-98d1-8d70f3a82506\n3e1e149f1327\ne1981fb61187\nSales Representative\n58fe249ebced\nce5116345459\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nemployeeID\nfirstName\nlastName\ntitle\naddress\nhomePhone\n\n\n\n\n0\n1\nNancy\nDavolio\nSales Representative\n507 - 20th Ave. E. Apt. 2A\n(206) 555-9857\n\n\n1\n2\nAndrew\nFuller\nVice President, Sales\n908 W. Capital Way\n(206) 555-9482\n\n\n2\n3\nJanet\nLeverling\nSales Representative\n722 Moss Bay Blvd.\n(206) 555-3412",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "cloakdf",
+    "section": "",
+    "text": "pip install cloakdf",
+    "crumbs": [
+      "cloakdf"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "cloakdf",
+    "section": "",
+    "text": "pip install cloakdf",
+    "crumbs": [
+      "cloakdf"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "cloakdf",
+    "section": "How to use",
+    "text": "How to use\nWe’ll demonstrate cloakdf using the Northwind dataset. A classic sample database with customers, orders, and employees tables that share keys across them.\n#| eval: false\nimport httpx\nfrom pathlib import Path\n\nbase = \"https://raw.githubusercontent.com/neo4j-contrib/northwind-neo4j/refs/heads/master/data\"\nfiles = [\"customers.csv\", \"orders.csv\", \"employees.csv\"]\ndata = Path(\"../data\")\ndata.mkdir(exist_ok=True)\n\nfor f in files:\n    (data/f).write_bytes(httpx.get(f\"{base}/{f}\").content)\n\n1. Define your table configuration\nEach table’s config specifies two kinds of columns:\n\nid groups (e.g. id1, id2) — key columns that are shared across tables. Columns in the same group get consistent pseudonyms: customerID in both customers and orders maps to the same UUID, preserving referential integrity.\n\nNote: All id columns must be string dtype before encoding — cast with .astype(str) if needed. - mask — sensitive columns to replace with opaque hex tokens. These are stored in a shared vault, so identical values (e.g. the same address appearing twice) get the same token.\n\ntables = {\n    'customers': {\n        'id1': 'customerID',\n        'mask': ['contactName', 'address', 'phone', 'companyName', 'fax', 'city']\n    },\n    'orders': {\n        'id1': 'customerID',\n        'id2': 'employeeID',\n        'mask': ['shipName', 'shipAddress']\n    },\n    'employees': {\n        'id2': 'employeeID',\n        'mask': ['firstName', 'lastName', 'address', 'homePhone', 'birthDate', 'notes']\n    },\n}\n\n\n\n2. Encode your DataFrames\n\nimport pandas as pd\nfrom pathlib import Path\n\ndata = Path(\"../data\")\nunk = CloakDF(tables)\n\noriginals, encoded = {}, {}\nfor name in tables:\n    df = pd.read_csv(data/f\"{name}.csv\", on_bad_lines='skip')\n    for k, v in tables[name].items():\n        if k.startswith('id'): df[v] = df[v].astype(str)\n    originals[name] = df\n    encoded[name] = unk.encode(name, df)\n\nencoded['customers'].head(3)\n\n\n\n\n\n\n\n\ncustomerID\ncompanyName\ncontactName\ncontactTitle\naddress\ncity\nregion\npostalCode\ncountry\nphone\nfax\n\n\n\n\n0\n9eb2c3d4-32d3-434c-863c-44d8ac4067d9\n9288db060f26\n5c1dfdfc8f62\nSales Representative\n80e2676376a1\nc1f7bd6a22f0\nNaN\n12209\nGermany\n715e53fda07f\ncd0efa7df34e\n\n\n1\n82d494d5-a9e7-4690-b5ec-3104dad5b87d\n18db1aa91f8c\n3c4420341c1a\nOwner\n135d66291b39\n42d81129a68e\nNaN\n05021\nMexico\na5611db2c349\n25fabc23caa4\n\n\n2\nfa465d8d-ead0-4d03-ae91-8a65715c7fd1\n9458f0d21f98\n08b3087d3dda\nOwner\na93f1f586e03\n42d81129a68e\nNaN\n05023\nMexico\n2a648576b9be\nNaN\n\n\n\n\n\n\n\n\n\n3. Save encrypted mappings\nThe mapping dictionaries (key_maps and vault) are the sensitive artefacts — they allow de-anonymisation. Generate a Fernet key and encrypt them at rest. You can store the key to a file or an environment variable:\n\n⚠️ Never commit your Fernet key or encrypted mappings to version control. Ensure your .gitignore includes key files and *.enc files (e.g. *.key, *.enc, data/).\n\n\nimport os\n\nkey = CloakDF.generate_key()\nunk.save(data/\"mappings.enc\", key)\n\n# Optionally store the key in an environment variable\nos.environ['CLOAKDF_KEY'] = key.decode()\nprint(\"✓ Mappings saved and key stored in env var\")\n\n✓ Mappings saved and key stored in env var\n\n\n\n\n4. Load and decode\nLoad the encrypted mappings (using the key directly or from an environment variable) and reverse the encoding:\n\n# Load key from env var (or pass `key` directly)\nloaded_key = CloakDF.load_key(env_var='CLOAKDF_KEY')\n# loaded_key = CloakDF.load_key(path=\"path/to/keyfile\")  # alternative: from file\n\nunk2 = CloakDF.load(data/\"mappings.enc\", loaded_key, tables)\n\nfor name in tables:\n    decoded = unk2.decode(name, encoded[name])\n    pd.testing.assert_frame_equal(decoded, originals[name])\n    print(f\"✓ {name} round-trip OK\")\n\ndecoded.head(3)\n\n✓ customers round-trip OK\n✓ orders round-trip OK\n✓ employees round-trip OK\n\n\n\n\n\n\n\n\n\nemployeeID\nlastName\nfirstName\ntitle\ntitleOfCourtesy\nbirthDate\nhireDate\naddress\ncity\nregion\npostalCode\ncountry\nhomePhone\nextension\nphoto\nnotes\nreportsTo\nphotoPath\n\n\n\n\n0\n1\nDavolio\nNancy\nSales Representative\nMs.\n1948-12-08 00:00:00.000\n1992-05-01 00:00:00.000\n507 - 20th Ave. E. Apt. 2A\nSeattle\nWA\n98122\nUSA\n(206) 555-9857\n5467\n0x151C2F00020000000D000E0014002100FFFFFFFF4269...\nEducation includes a BA in psychology from Col...\n2.0\nhttp://accweb/emmployees/davolio.bmp\n\n\n1\n2\nFuller\nAndrew\nVice President, Sales\nDr.\n1952-02-19 00:00:00.000\n1992-08-14 00:00:00.000\n908 W. Capital Way\nTacoma\nWA\n98401\nUSA\n(206) 555-9482\n3457\n0x151C2F00020000000D000E0014002100FFFFFFFF4269...\nAndrew received his BTS commercial in 1974 and...\nNaN\nhttp://accweb/emmployees/fuller.bmp\n\n\n2\n3\nLeverling\nJanet\nSales Representative\nMs.\n1963-08-30 00:00:00.000\n1992-04-01 00:00:00.000\n722 Moss Bay Blvd.\nKirkland\nWA\n98033\nUSA\n(206) 555-3412\n3355\n0x151C2F00020000000D000E0014002100FFFFFFFF4269...\nJanet has a BS degree in chemistry from Boston...\n2.0\nhttp://accweb/emmployees/leverling.bmp\n\n\n\n\n\n\n\n\n\n5. Compare encoded vs decoded\nHere’s what the employees table looks like — encoded (pseudonymised) vs decoded (original):\n\ncols = ['employeeID', 'firstName', 'lastName', 'title', 'address', 'homePhone']\ndisplay(encoded['employees'][cols].head(3))\ndisplay(decoded[cols].head(3))",
+    "crumbs": [
+      "cloakdf"
+    ]
+  }
+]
