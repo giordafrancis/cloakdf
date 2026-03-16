@@ -31,3 +31,4 @@ version = {attr = "cloakdf.__version__"}
 include = ["cloakdf"]
 
 [tool.nbdev]
+branch = "master"
